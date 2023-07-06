@@ -1,9 +1,8 @@
-import { Request } from '../utils/request.js';
-import { apiProduct } from '../constants/endPoint.js';
+import { Request } from 'src/utils/request.js'
+import { apiProduct } from 'src/constants/endPoint.js'
 
-export const GetListProductApi = () => (
+export const GetListProductApi = () =>
     Request({
         method: 'get',
         url: apiProduct.getListProducts,
     })
-)

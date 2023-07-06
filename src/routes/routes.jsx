@@ -1,56 +1,43 @@
-import { lazy, Suspense, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext.jsx';
-import { Navigate, Outlet } from 'react-router-dom';
-import Page from '../components/page/index.jsx';
-import Header from '../app/header/index.jsx';
-import Footer from '../app/footer/index.jsx';
-import PropTypes from 'prop-types';
-import { Box } from '@chakra-ui/react';
-import { Loading } from '../components/Loading/index.jsx';
-import { COLORS } from '../theme/colors.js';
+import { lazy, Suspense, useContext } from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Box } from '@chakra-ui/react'
+import Header from 'src/app/header/index.jsx'
+import Page from 'src/components/page/index.jsx'
+import { Loading } from 'src/components/Loading/index.jsx'
+import { COLORS } from 'src/theme/colors.js'
+import { AuthContext } from 'src/context/AuthContext.jsx'
+import Footer from 'src/app/footer/index.jsx'
 
-export const Login = lazy(() => import('../pages/auth/login'))
-export const Register = lazy(() => import('../pages/auth/register'))
-export const ForgetPassword = lazy(() => import('../pages/auth/forget-password'))
-export const Home = lazy(() => import('../pages/home'))
-export const ProductList = lazy(() => import('../pages/product/product-list'))
-export const ProductDetail = lazy(() => import('../pages/product/product-detail'))
-export const Cart = lazy(() => import('../pages/cart/index.jsx'))
-
+export const Login = lazy(() => import('src/pages/auth/login'))
+export const Register = lazy(() => import('src/pages/auth/register'))
+export const ForgetPassword = lazy(() => import('src/pages/auth/forget-password'))
+export const Home = lazy(() => import('src/pages/home'))
+export const ProductList = lazy(() => import('src/pages/product/product-list'))
+export const ProductDetail = lazy(() => import('src/pages/product/product-detail'))
+export const Cart = lazy(() => import('src/pages/cart/index.jsx'))
 
 function ProtectedRoute() {
     const { isLogin } = useContext(AuthContext)
-    return isLogin ? <Outlet/> : <Navigate to={Routes.AUTH.LOGIN.path}/>
+    return isLogin ? <Outlet /> : <Navigate to={Routes.AUTH.LOGIN.path} />
 }
 
 function RejectedRoute() {
     const { isLogin } = useContext(AuthContext)
-    return !isLogin ? <Outlet/> : <Navigate to={Routes.HOME.path}/>
+    return !isLogin ? <Outlet /> : <Navigate to={Routes.HOME.path} />
 }
 
 function AppLayout({ children }) {
     return (
         <Box>
-            <Header/>
+            <Header />
             <Page>
-                <Suspense fallback={
-                    <Loading
-                        thickness='2px'
-                        speed='0.6s'
-                        emptyColor={COLORS.BLUE50}
-                        color={COLORS.BLUE900}
-                        size='lg'
-                    />
-                }>
-                    {children}
-                </Suspense>
+                <Suspense fallback={<Loading thickness="2px" speed="0.6s" emptyColor={COLORS.BLUE50} color={COLORS.BLUE900} size="lg" />}>{children}</Suspense>
             </Page>
-            <Footer/>
+            <Footer />
         </Box>
-
     )
 }
-
 
 const Routes = {
     AUTH: {
@@ -72,9 +59,8 @@ const Routes = {
     },
 }
 
-
 AppLayout.propTypes = {
-    children: PropTypes.any
-};
+    children: PropTypes.any,
+}
 
 export { Routes, ProtectedRoute, RejectedRoute, AppLayout }

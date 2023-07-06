@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
-import { GetListProducts } from '../../store/reducer/Product/action.js'
 import { useTranslation } from 'react-i18next'
+import { GetListProducts } from 'src/store/reducer/Product/action.js'
 
 function Home() {
     const { t } = useTranslation(['header', 'message'])
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(GetListProducts())
+        dispatch(GetListProducts)
     }, [dispatch])
 
     return (

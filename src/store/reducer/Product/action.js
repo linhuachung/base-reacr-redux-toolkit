@@ -1,8 +1,8 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { GetListProductApi } from '../../../apis/product.js';
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { GetListProductApi } from 'src/apis/product.js'
 
 const keyReducer = {
-    getList: 'product/getList'
+    getList: 'product/getList',
 }
 
 const GetListProducts = createAsyncThunk(keyReducer.getList, async (data) => {
@@ -11,6 +11,4 @@ const GetListProducts = createAsyncThunk(keyReducer.getList, async (data) => {
     return res
 })
 
-export {
-    GetListProducts
-}
+export { GetListProducts }

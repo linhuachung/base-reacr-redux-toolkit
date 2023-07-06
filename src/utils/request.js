@@ -1,31 +1,15 @@
-import { verifyDataPost } from './format.js';
-import Toast from '../components/Toast/index.jsx';
-import { MESSAGE_ERROR, MESSAGE_SUCCESS } from '../constants/message.js';
-import { TOAST_STATUS } from '../components/Toast/toast-message.js';
-import PropTypes from 'prop-types';
-import { Methods } from './method.js';
+import { verifyDataPost } from './format.js'
+import Toast from 'src/components/Toast/index.jsx'
+import { MESSAGE_ERROR, MESSAGE_SUCCESS } from 'src/constants/message.js'
+import { TOAST_STATUS } from 'src/components/Toast/toast-message.js'
+import PropTypes from 'prop-types'
+import { Methods } from './method.js'
 
-export const Request = async ({
-                           method,
-                           data,
-                           url,
-                           onRequest = () => {
-                           },
-                           onSuccess = () => {
-                           },
-                           onFailed = () => {
-                           },
-                           onFinally = () => {
-                           },
-                           textSuccess = ''
-                       }) => {
+export const Request = async ({ method, data, url, onRequest = () => {}, onSuccess = () => {}, onFailed = () => {}, onFinally = () => {}, textSuccess = '' }) => {
     onRequest(textSuccess)
 
     try {
-        const response = await Methods[method](
-            url,
-            method === 'delete' || method === 'postFile' ? data : verifyDataPost(data)
-        )
+        const response = await Methods[method](url, method === 'delete' || method === 'postFile' ? data : verifyDataPost(data))
 
         onSuccess(response)
 
@@ -39,7 +23,7 @@ export const Request = async ({
             window.location.href = '/login'
         }
         onFailed(error.response.data)
-        Toast(MESSAGE_ERROR[error.code] ||error.code, TOAST_STATUS.error)
+        Toast(MESSAGE_ERROR[error.code] || error.code, TOAST_STATUS.error)
         throw new Error(error.response.data.message || 'Unknown error occurred')
     } finally {
         onFinally()
@@ -55,5 +39,4 @@ Request.prototype = {
     onFailed: PropTypes.func,
     onFinally: PropTypes.func,
     textSuccess: PropTypes.func,
-
 }

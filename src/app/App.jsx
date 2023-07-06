@@ -1,12 +1,8 @@
-import useRouteElements from '../routes/index.jsx';
+import useRouteElements from 'src/routes/index.jsx'
 
 function App() {
     const routeElements = useRouteElements()
-    return (
-        <>
-            {routeElements}
-        </>
-    )
+    return <>{routeElements}</>
 }
 
 export default App

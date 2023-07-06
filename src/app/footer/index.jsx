@@ -1,13 +1,11 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react';
-import Page from '../../components/page/index.jsx';
+import { Box } from '@chakra-ui/react'
+import Page from 'src/components/page/index.jsx'
 
 function Footer() {
     return (
         <Box>
-            <Page>
-                Footer
-            </Page>
+            <Page>Footer</Page>
         </Box>
     )
 }
