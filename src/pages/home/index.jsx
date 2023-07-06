@@ -10,7 +10,6 @@ function Home() {
     useEffect(() => {
         dispatch(GetListProducts())
     }, [ dispatch ])
-
     return (
         <Box padding={0}>
             {tMessage('hello_word')}

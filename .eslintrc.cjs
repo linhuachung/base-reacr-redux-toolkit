@@ -16,5 +16,7 @@ module.exports = {
         'array-bracket-spacing': ['error', 'always'],
         'comma-spacing': ['error', { 'before': false, 'after': true }],
         'no-unused-vars': ['error', { 'varsIgnorePattern': 'React' }],
+        'jsx-quotes': ['error', 'prefer-single'],
+        'key-spacing': ['error', { 'afterColon': true }],
     },
 }

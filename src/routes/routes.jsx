@@ -32,7 +32,7 @@ function AppLayout({ children }) {
         <Box>
             <Header />
             <Page>
-                <Suspense fallback={<Loading thickness="2px" speed="0.6s" emptyColor={COLORS.BLUE50} color={COLORS.BLUE900} size="lg" />}>{children}</Suspense>
+                <Suspense fallback={<Loading thickness='2px' speed='0.6s' emptyColor={COLORS.BLUE50} color={COLORS.BLUE900} size='lg' />}>{children}</Suspense>
             </Page>
             <Footer />
         </Box>

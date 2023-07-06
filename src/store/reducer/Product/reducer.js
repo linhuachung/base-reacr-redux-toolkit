@@ -11,7 +11,7 @@ const initialState = {
             totalPage: 0,
         },
     },
-    loadingProduct: false
+    loadingProduct: false,
 }
 const ProductReducer = createSlice({
     name: 'product',
@@ -20,11 +20,11 @@ const ProductReducer = createSlice({
     extraReducers: ({ addCase }) => {
         addCase(GetListProducts.pending, (state) => ({
             ...state,
-            loadingProduct:true,
-            productList: initialState.productList
+            loadingProduct: true,
+            productList: initialState.productList,
         }))
 
-        addCase(GetListProducts.fulfilled, (state, { payload }) =>({
+        addCase(GetListProducts.fulfilled, (state, { payload }) => ({
             ...state,
             loadingProduct: false,
             productList: {
