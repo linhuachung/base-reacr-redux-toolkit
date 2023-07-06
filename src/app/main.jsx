@@ -7,14 +7,17 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthContextProvider } from 'src/context/AuthContext.jsx'
 import { ThemeProviderChakra } from 'src/context/ThemeContext.jsx'
 import { store } from 'src/store/index.js'
+import { LanguageProvider } from 'src/context/TranslateContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
         <BrowserRouter>
             <AuthContextProvider>
-                <ThemeProviderChakra>
-                    <App />
-                </ThemeProviderChakra>
+                <LanguageProvider>
+                    <ThemeProviderChakra>
+                        <App />
+                    </ThemeProviderChakra>
+                </LanguageProvider>
             </AuthContextProvider>
         </BrowserRouter>
     </Provider>

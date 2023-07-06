@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons/faGlobe'
+import { IMAGES } from 'src/theme/images.js'
 import { useTranslation } from 'react-i18next'
 import { LocalStore } from 'src/utils/storage.js'
-import Page from 'src/components/page/index.jsx'
+import LanguageContext from 'src/context/TranslateContext.jsx'
 import MenuComponent from 'src/components/menu/index.jsx'
-import { IMAGES } from 'src/theme/images.js'
+import Page from 'src/components/page/index.jsx'
 
 function Header() {
-    const { i18n, t } = useTranslation('header')
+    const { i18n } = useTranslation()
+    const { tHeader } = useContext(LanguageContext)
     const [language, setLanguage] = useState(LocalStore.get('language') || 'vn')
 
     const chooseLanguageItems = [
         {
-            content: t('vn'),
+            content: tHeader('vn'),
             image: IMAGES.VI_FLAG,
             value: 'vn',
         },
         {
-            content: t('en'),
+            content: tHeader('en'),
             image: IMAGES.EN_FLAG,
             value: 'en',
         },
@@ -33,11 +35,9 @@ function Header() {
     return (
         <Box>
             <Page>
-                <Box>
-                    <MenuComponent items={chooseLanguageItems} title={t(`${language}`)} icon={faGlobe} onClick={handleChangeLanguage} />
-                </Box>
-                <Box></Box>
+                <MenuComponent items={chooseLanguageItems} title={tHeader(`${language}`)} icon={faGlobe} onClick={handleChangeLanguage} />
             </Page>
+            <Box></Box>
         </Box>
     )
 }

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
-import { useTranslation } from 'react-i18next'
 import { GetListProducts } from 'src/store/reducer/Product/action.js'
+import LanguageContext from 'src/context/TranslateContext.jsx'
 
 function Home() {
-    const { t } = useTranslation(['header', 'message'])
+    const { tMessage } = useContext(LanguageContext)
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(GetListProducts())
@@ -13,10 +14,8 @@ function Home() {
 
     return (
         <Box padding={0}>
-            {t('message:hello_word')}
-            <br />
-            {t('header:vn')}
-            <div>adsfasdfa sdf</div>
+            {tMessage('hello_word')}
+            <div>This is home page</div>
         </Box>
     )
 }
