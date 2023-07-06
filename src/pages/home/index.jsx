@@ -6,11 +6,10 @@ import LanguageContext from 'src/context/TranslateContext.jsx'
 
 function Home() {
     const { tMessage } = useContext(LanguageContext)
-
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(GetListProducts())
-    }, [dispatch])
+    }, [ dispatch ])
 
     return (
         <Box padding={0}>

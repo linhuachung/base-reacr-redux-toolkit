@@ -12,13 +12,14 @@ const { isExist, get, remove } = LocalStore
 
 function AuthContextProvider({ children }) {
     const navigate = useNavigate()
-    const [isLogin, setIsLogin] = useState(isExist('access_token'))
+    const [ isLogin, setIsLogin ] = useState(isExist('access_token'))
 
     useEffect(() => {
         if (isExist('access_token')) {
             setIsLogin(true)
         }
-    }, [get('access_token', true)])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ get('access_token', true) ])
 
     const signIn = () => {
         setIsLogin(true)

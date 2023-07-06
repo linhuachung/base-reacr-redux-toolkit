@@ -13,6 +13,8 @@ module.exports = {
         'react-refresh/only-export-components': 'warn',
         'quotes': ['error', 'single'],
         'object-curly-spacing': ['error', 'always', { 'objectsInObjects': true }],
-        'no-unused-vars': ['error', { 'varsIgnorePattern': 'React' }]
+        'array-bracket-spacing': ['error', 'always'],
+        'comma-spacing': ['error', { 'before': false, 'after': true }],
+        'no-unused-vars': ['error', { 'varsIgnorePattern': 'React' }],
     },
 }

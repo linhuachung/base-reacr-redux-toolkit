@@ -11,7 +11,7 @@ import Page from 'src/components/page/index.jsx'
 function Header() {
     const { i18n } = useTranslation()
     const { tHeader } = useContext(LanguageContext)
-    const [language, setLanguage] = useState(LocalStore.get('language') || 'vn')
+    const [ language, setLanguage ] = useState(LocalStore.get('language') || 'vn')
 
     const chooseLanguageItems = [
         {

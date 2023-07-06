@@ -31,9 +31,9 @@ export const Request = async ({ method, data, url, onRequest = () => {}, onSucce
 }
 
 Request.prototype = {
-    method: PropTypes.oneOf(['get', 'post', 'put', 'delete', 'postFile']).isRequired,
+    method: PropTypes.oneOf([ 'get', 'post', 'put', 'delete', 'postFile' ]).isRequired,
     url: PropTypes.string.isRequired,
-    data: PropTypes.oneOfType([PropTypes.object, PropTypes.instanceOf(FormData)]),
+    data: PropTypes.oneOfType([ PropTypes.object, PropTypes.instanceOf(FormData) ]),
     onRequest: PropTypes.func,
     onSuccess: PropTypes.func,
     onFailed: PropTypes.func,

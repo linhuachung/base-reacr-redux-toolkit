@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 const LanguageContext = createContext({
-    tHeader: {},
-    tMessage: {},
+    tHeader: () => {},
+    tMessage: () => {},
 })
 
 export function LanguageProvider({ children }) {
