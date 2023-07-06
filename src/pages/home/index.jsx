@@ -8,7 +8,7 @@ function Home() {
     const { t } = useTranslation(['header', 'message'])
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(GetListProducts)
+        dispatch(GetListProducts())
     }, [dispatch])
 
     return (
