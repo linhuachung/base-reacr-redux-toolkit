@@ -15,7 +15,13 @@ function MenuComponent({ items, title, icon, onClick }) {
                 {items &&
                     items.map((menu, index) => {
                         return (
-                            <MenuItem minH='48px' key={index} _hover={{ bg: COLORS.BLUE100 }} onClick={() => onClick(menu.value)}>
+                            <MenuItem
+                                minH='48px'
+                                key={index}
+                                _hover={{ bg: COLORS.BLUE100 }}
+                                onClick={() => onClick(menu.value)}
+                                background={JSON.stringify(menu.value) === localStorage.getItem('language') ? COLORS.BLUE100 : 'transparent'}
+                            >
                                 {menu.image && <Image src={menu.image} alt='Fluffybuns the destroyer' mr='12px' />}
                                 <span>{menu.content}</span>
                             </MenuItem>

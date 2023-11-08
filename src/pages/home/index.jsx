@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { GetListProducts } from 'src/store/reducer/Product/action.js'
 import LanguageContext from 'src/context/TranslateContext.jsx'
+import { GetListProducts } from 'src/store/reducer/Product/action.js'
 
 function Home() {
     const { tMessage } = useContext(LanguageContext)
@@ -13,6 +13,7 @@ function Home() {
     return (
         <Box padding={0}>
             {tMessage('hello_word')}
+
             <div>This is home page</div>
         </Box>
     )
